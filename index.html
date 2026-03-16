@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pollo Mix — Produtos Automotivos</title>
+  <meta name="description" content="Distribuidora especializada em bujões de carter, arruelas, anéis O'rings, ferramentas e insumos para oficinas mecânicas. Mais de 10 anos atendendo todo o Brasil.">
+
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+  <meta property="og:title" content="Pollo Mix — Produtos Automotivos">
+  <meta property="og:description" content="Distribuidora especializada em bujões de carter, arruelas, anéis O'rings, ferramentas e insumos para oficinas mecânicas.">
+  <meta property="og:image" content="images/og-image.png">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Pollo Mix — Produtos Automotivos">
+  <meta name="twitter:description" content="Distribuidora especializada em produtos automotivos. Mais de 10 anos no mercado.">
+  <meta name="twitter:image" content="images/og-image.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --red:        #CC0000;
+      --red-dark:   #990000;
+      --red-hover:  #E00000;
+      --black:      #0D0D0D;
+      --black-soft: #1A1A1A;
+      --black-card: #242424;
+      --white:      #FFFFFF;
+      --gray-50:    #F9F9F9;
+      --gray-100:   #F3F3F3;
+      --gray-200:   #E8E8E8;
+      --gray-400:   #9CA3AF;
+      --gray-600:   #6B7280;
+      --gray-800:   #374151;
+      --shadow-sm:  0 2px 8px rgba(0,0,0,0.07);
+      --shadow:     0 4px 20px rgba(0,0,0,0.11);
+      --shadow-lg:  0 8px 40px rgba(0,0,0,0.15);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 68px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(13,13,13,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .header-logo img { height: 42px; width: auto; }
+
+    nav { display: flex; align-items: center; gap: 32px; }
+    nav a {
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--red) !important;
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      font-size: 13px !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--red-hover) !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    #navMenu {
+      display: none;
+      position: fixed;
+      top: 68px; left: 0; right: 0;
+      background: rgba(13,13,13,0.98);
+      backdrop-filter: blur(20px);
+      padding: 12px 24px 24px;
+      flex-direction: column;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    #navMenu.open { display: flex; }
+    #navMenu a {
+      color: rgba(255,255,255,0.78);
+      font-size: 16px;
+      font-weight: 400;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: color 0.2s;
+    }
+    #navMenu a:last-child { border-bottom: none; }
+    #navMenu a:hover { color: #fff; }
+    #navMenu .mob-cta {
+      margin-top: 8px;
+      background: var(--red);
+      color: #fff !important;
+      text-align: center;
+      padding: 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      border-bottom: none !important;
+    }
+    #navMenu .mob-cta:hover { background: var(--red-hover); }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      padding-top: 68px;
+      background: var(--black);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent 0px, transparent 20px,
+        rgba(204,0,0,0.04) 20px, rgba(204,0,0,0.04) 21px
+      );
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(204,0,0,0.13) 0%, transparent 62%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 64px 24px;
+      max-width: 860px;
+      width: 100%;
+    }
+    .hero-logo-img {
+      height: 90px;
+      width: auto;
+      margin: 0 auto 36px;
+      filter: drop-shadow(0 0 32px rgba(204,0,0,0.28));
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(204,0,0,0.1);
+      border: 1px solid rgba(204,0,0,0.3);
+      color: #FF8080;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 4px;
+      margin-bottom: 28px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+    }
+    .hero-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(56px, 9vw, 108px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 0.88;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .hero-title .accent { color: var(--red); }
+    .hero-subtitle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: 500;
+      color: rgba(255,255,255,0.55);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+    }
+    .hero-desc {
+      font-size: clamp(15px, 1.8vw, 17px);
+      color: rgba(255,255,255,0.4);
+      max-width: 560px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .btn-red {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--red);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 30px;
+      border-radius: 6px;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-red:hover { background: var(--red-hover); transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-size: 15px;
+      font-weight: 500;
+      padding: 14px 30px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.2s;
+    }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+    /* ===== STATS ===== */
+    .stats-bar {
+      background: var(--black-soft);
+      border-top: 3px solid var(--red);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 44px 24px;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .stat-num em { color: var(--red); font-style: normal; }
+    .stat-label {
+      font-size: 13px;
+      color: var(--gray-400);
+      margin-top: 6px;
+    }
+
+    /* ===== SECTION BASE ===== */
+    .section { padding: 100px 24px; }
+    .section-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--red);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+    .section-title.dark  { color: var(--black); }
+    .section-title.white { color: #fff; }
+    .section-sub {
+      font-size: 17px;
+      line-height: 1.68;
+      margin-top: 16px;
+      max-width: 580px;
+    }
+    .section-sub.gray  { color: var(--gray-600); }
+    .section-sub.light { color: rgba(255,255,255,0.45); }
+    .sec-center { text-align: center; margin-bottom: 64px; }
+    .sec-center .section-sub { margin-left: auto; margin-right: auto; }
+    .divider { width: 48px; height: 3px; background: var(--red); border-radius: 2px; margin-top: 18px; }
+    .divider.center { margin-left: auto; margin-right: auto; }
+
+    /* ===== SOBRE ===== */
+    #sobre { background: var(--gray-50); }
+    .sobre-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .sobre-text {
+      font-size: 16px;
+      color: var(--gray-600);
+      line-height: 1.8;
+      margin-top: 24px;
+    }
+    .sobre-text p + p { margin-top: 14px; }
+    .sobre-text strong { color: var(--black); font-weight: 600; }
+    .sobre-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 36px;
+    }
+    .hl-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      border-left: 3px solid var(--red);
+      box-shadow: var(--shadow-sm);
+    }
+    .hl-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--red);
+      line-height: 1;
+    }
+    .hl-label {
+      font-size: 12px;
+      color: var(--gray-600);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    .mvv-stack { display: flex; flex-direction: column; gap: 14px; }
+    .mvv-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+    .mvv-card.red-bg { background: var(--red); }
+    .mvv-card.dark-bg { background: var(--black); }
+    .mvv-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 10px;
+    }
+    .mvv-card          .mvv-label { color: var(--red); }
+    .mvv-card.red-bg   .mvv-label { color: rgba(255,255,255,0.65); }
+    .mvv-card.dark-bg  .mvv-label { color: var(--red); }
+    .mvv-text { font-size: 14px; line-height: 1.68; }
+    .mvv-card          .mvv-text { color: var(--gray-600); }
+    .mvv-card.red-bg   .mvv-text { color: rgba(255,255,255,0.92); }
+    .mvv-card.dark-bg  .mvv-text { color: rgba(255,255,255,0.8); }
+    .values-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .val-tag {
+      background: rgba(255,255,255,0.14);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    /* ===== PRODUTOS ===== */
+    #produtos { background: var(--gray-100); }
+    .produtos-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .produto-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 28px;
+      transition: transform 0.22s, box-shadow 0.22s;
+      position: relative;
+      overflow: hidden;
+    }
+    .produto-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--red);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .produto-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .produto-card:hover::before { transform: scaleX(1); }
+    .prod-icon {
+      width: 52px; height: 52px;
+      background: rgba(204,0,0,0.07);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    .prod-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+    .prod-desc { font-size: 13px; color: var(--gray-600); line-height: 1.65; }
+    .prod-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--red);
+      transition: gap 0.2s;
+    }
+    .prod-cta:hover { gap: 10px; }
+
+    /* ===== MERCADO ===== */
+    #mercado {
+      background: var(--black);
+      padding: 100px 24px;
+    }
+    .mercado-inner { max-width: 1100px; margin: 0 auto; }
+    .mercado-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .mercado-card {
+      background: var(--black-card);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 36px 28px;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .mercado-card:hover { border-color: rgba(204,0,0,0.4); transform: translateY(-3px); }
+    .mercado-icon { font-size: 40px; margin-bottom: 20px; }
+    .mercado-name {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+    }
+    .mercado-desc { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.65; }
+
+    /* ===== CONTATO ===== */
+    #contato { background: var(--gray-50); }
+    .contato-wrap { max-width: 900px; margin: 0 auto; }
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 48px;
+    }
+    .contato-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .contato-card.full { grid-column: span 2; }
+    .cc-icon {
+      width: 42px; height: 42px;
+      background: rgba(204,0,0,0.07);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--red);
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+    .cc-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--gray-400);
+      margin-bottom: 6px;
+    }
+    .cc-value { font-size: 15px; font-weight: 500; color: var(--black); line-height: 1.55; }
+    .cc-value a { color: var(--red); }
+    .cc-value a:hover { text-decoration: underline; }
+
+    .wa-cta-wrap { text-align: center; margin-top: 44px; }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #22C55E;
+      color: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      padding: 16px 40px;
+      border-radius: 8px;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 4px 20px rgba(34,197,94,0.28);
+    }
+    .btn-whatsapp:hover { background: #16A34A; transform: translateY(-2px); }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gray-400);
+      font-size: 14px;
+      margin-top: 20px;
+      transition: color 0.2s;
+    }
+    .social-link:hover { color: var(--gray-800); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--black);
+      border-top: 3px solid var(--red);
+      padding: 36px 24px;
+      text-align: center;
+    }
+    .footer-logo { height: 38px; margin: 0 auto 18px; }
+    .footer-txt { font-size: 12px; color: rgba(255,255,255,0.28); line-height: 2; }
+
+    /* ===== WHATSAPP FLOAT ===== */
+    .wa-float {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      z-index: 900;
+      width: 56px; height: 56px;
+      background: #22C55E;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(34,197,94,0.38);
+      text-decoration: none;
+    }
+
+    /* ===== REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 1280px) {
+      .produtos-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (max-width: 1023px) {
+      header { padding: 0 24px; }
+      .sobre-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .mercado-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      header { height: 60px; padding: 0 20px; }
+      #navMenu { top: 60px; }
+      #hero { padding-top: 60px; }
+      .hero-logo-img { height: 70px; margin-bottom: 28px; }
+      .hero-btns { flex-direction: column; align-items: center; }
+      .btn-red, .btn-outline { width: 100%; max-width: 320px; justify-content: center; }
+      .stats-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+      .section { padding: 72px 20px; }
+      .sec-center { margin-bottom: 48px; }
+      .sobre-highlights { grid-template-columns: 1fr 1fr; }
+      .produtos-grid { grid-template-columns: 1fr 1fr; }
+      .mercado-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .contato-grid { grid-template-columns: 1fr; }
+      .contato-card.full { grid-column: span 1; }
+      .wa-float { bottom: 20px; right: 16px; width: 50px; height: 50px; }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 0 16px; }
+      .header-logo img { height: 34px; }
+      .hero-inner { padding: 48px 16px; }
+      .hero-logo-img { height: 60px; margin-bottom: 24px; }
+      .stats-inner { gap: 20px 12px; }
+      .section { padding: 56px 16px; }
+      .sobre-highlights { grid-template-columns: 1fr 1fr; }
+      .produtos-grid { grid-template-columns: 1fr; }
+      .btn-whatsapp { font-size: 15px; padding: 14px 28px; }
+      .wa-float { bottom: 16px; right: 12px; width: 48px; height: 48px; }
+    }
+
+    @media (max-width: 360px) {
+      .header-logo img { height: 28px; }
+      .hero-logo-img { height: 52px; }
+      .sobre-highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <a href="#hero" class="header-logo">
+    <img src="images/logo.png" alt="Pollo Mix — Produtos Automotivos">
+  </a>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#mercado">Atuação</a>
+    <a href="#contato" class="nav-cta">Fale conosco</a>
+  </nav>
+  <button class="hamburger" id="menuBtn" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<nav id="navMenu">
+  <a href="#sobre"    onclick="closeMenu()">Sobre</a>
+  <a href="#produtos" onclick="closeMenu()">Produtos</a>
+  <a href="#mercado"  onclick="closeMenu()">Atuação</a>
+  <a href="#contato"  onclick="closeMenu()">Contato</a>
+  <a href="https://wa.me/5511942086190" target="_blank" onclick="closeMenu()" class="mob-cta">
+    <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+  </a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <img src="images/logo.png" alt="Pollo Mix" class="hero-logo-img">
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Mais de 10 anos no mercado automotivo
+    </div>
+    <h1 class="hero-title">Pollo <span class="accent">Mix</span></h1>
+    <h2 class="hero-subtitle">A escolha inteligente das oficinas</h2>
+    <p class="hero-desc">
+      Distribuidora especializada em bujões de carter, arruelas, anéis O'rings, ferramentas e insumos para troca de óleo e oficinas mecânicas em todo o Brasil.
+    </p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de mais informações sobre os produtos da Pollo Mix." class="btn-red" target="_blank">
+        <i class="fab fa-whatsapp"></i> Fale no WhatsApp
+      </a>
+      <a href="#produtos" class="btn-outline">
+        <i class="fas fa-box"></i> Ver produtos
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat reveal">
+      <div class="stat-num">+<em>10</em></div>
+      <div class="stat-label">Anos no mercado</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num"><em>100%</em></div>
+      <div class="stat-label">Foco automotivo</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num">+<em>500</em></div>
+      <div class="stat-label">Clientes atendidos</div>
+    </div>
+    <div class="stat reveal">
+      <div class="stat-num"><em>🇧🇷</em></div>
+      <div class="stat-label">Entrega em todo o Brasil</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SOBRE ===== -->
+<section id="sobre" class="section">
+  <div class="sobre-wrap">
+    <div class="sobre-left">
+      <p class="section-tag">Nossa história</p>
+      <h2 class="section-title dark">Referência em<br>produtos automotivos</h2>
+      <div class="divider"></div>
+      <div class="sobre-text">
+        <p>A <strong>Pollo Mix</strong> é uma distribuidora especializada em produtos automotivos, com foco em vedação, fixação e ferramentas em geral.</p>
+        <p>Com mais de <strong>10 anos de atuação</strong> no mercado automotivo, desenvolvemos uma sólida gestão de negócios pautada em seriedade e comprometimento.</p>
+        <p>Nosso objetivo principal é atender de forma especializada trocas de óleo, oficinas mecânicas e autopeças. Nossa equipe está pronta para oferecer suporte técnico e orientação na escolha dos melhores produtos.</p>
+        <p>Contamos com um estoque abrangente e estamos sempre atualizados com as últimas tendências do mercado automotivo.</p>
+      </div>
+      <div class="sobre-highlights">
+        <div class="hl-card reveal">
+          <div class="hl-num">+10</div>
+          <div class="hl-label">Anos de experiência</div>
+        </div>
+        <div class="hl-card reveal">
+          <div class="hl-num">SP</div>
+          <div class="hl-label">Vargem Grande Paulista</div>
+        </div>
+        <div class="hl-card reveal">
+          <div class="hl-num">B2B</div>
+          <div class="hl-label">Atendimento especializado</div>
+        </div>
+        <div class="hl-card reveal">
+          <div class="hl-num">🇧🇷</div>
+          <div class="hl-label">Entrega em todo o Brasil</div>
+        </div>
+      </div>
+    </div>
+    <div class="sobre-right">
+      <div class="mvv-stack">
+        <div class="mvv-card reveal">
+          <div class="mvv-label">Missão</div>
+          <div class="mvv-text">Fornecer produtos automotivos de alta qualidade, com inovação e confiabilidade, contribuindo para a segurança e performance de veículos em todo o país.</div>
+        </div>
+        <div class="mvv-card red-bg reveal">
+          <div class="mvv-label">Visão</div>
+          <div class="mvv-text">Ser reconhecida como a principal referência em produtos automotivos no Brasil, oferecendo soluções inovadoras que agregam valor aos clientes e fortalecem parcerias duradouras.</div>
+        </div>
+        <div class="mvv-card dark-bg reveal">
+          <div class="mvv-label">Valores</div>
+          <div class="values-tags">
+            <span class="val-tag">Qualidade</span>
+            <span class="val-tag">Inovação</span>
+            <span class="val-tag">Ética</span>
+            <span class="val-tag">Foco no cliente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUTOS ===== -->
+<section id="produtos" class="section">
+  <div class="sec-center reveal">
+    <p class="section-tag">Linha completa</p>
+    <h2 class="section-title dark">Nossos produtos</h2>
+    <div class="divider center"></div>
+    <p class="section-sub gray">Tudo o que a sua oficina precisa em um só lugar. Produtos de qualidade para troca de óleo e manutenção veicular.</p>
+  </div>
+  <div class="produtos-grid">
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">🔩</div>
+      <div class="prod-name">Bujões de carter</div>
+      <div class="prod-desc">Bujões de alta resistência para vedação perfeita no carter do motor. Compatíveis com as principais marcas e modelos.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre bujões de carter." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">⭕</div>
+      <div class="prod-name">Arruelas de alumínio e cobre</div>
+      <div class="prod-desc">Arruelas certificadas para vedação eficiente nas trocas de óleo. Disponíveis em alumínio e cobre, em diversas medidas.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre arruelas." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">🔵</div>
+      <div class="prod-name">Anéis O'rings</div>
+      <div class="prod-desc">Anéis O'ring para vedação precisa em sistemas hidráulicos, motores e caixas de câmbio. Alta durabilidade e resistência.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre anéis O'rings." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">🔧</div>
+      <div class="prod-name">Ferramentas</div>
+      <div class="prod-desc">Ferramentas especializadas para trocas de óleo e manutenção veicular. Qualidade e durabilidade para o dia a dia da oficina.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre ferramentas." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">🔗</div>
+      <div class="prod-name">Abraçadeiras de metal e nylon</div>
+      <div class="prod-desc">Abraçadeiras de metal e nylon para fixação segura de mangueiras, cabos e conexões em veículos e sistemas automotivos.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre abraçadeiras." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">🔌</div>
+      <div class="prod-name">Conectores e travas</div>
+      <div class="prod-desc">Conectores e travas para fixação confiável em sistemas automotivos, elétricos e hidráulicos de veículos leves e pesados.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre conectores e travas." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <div class="produto-card reveal">
+      <div class="prod-icon">🛢️</div>
+      <div class="prod-name">Insumos para troca de óleo</div>
+      <div class="prod-desc">Linha completa de miudezas e insumos essenciais para troca de óleo: vedantes, clips, juntas e outros itens para a sua oficina.</div>
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre insumos para troca de óleo." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== MERCADO ===== -->
+<section id="mercado">
+  <div class="mercado-inner">
+    <div class="sec-center reveal">
+      <p class="section-tag" style="color:rgba(255,100,100,0.9);">Quem atendemos</p>
+      <h2 class="section-title white">Feito para quem vive de mecânica</h2>
+      <div class="divider center"></div>
+      <p class="section-sub light">Atendemos negócios que precisam de produtos confiáveis, entrega ágil e suporte técnico especializado.</p>
+    </div>
+    <div class="mercado-grid">
+      <div class="mercado-card reveal">
+        <div class="mercado-icon">🛢️</div>
+        <div class="mercado-name">Troca de óleo</div>
+        <div class="mercado-desc">Produtos especializados para pontos de troca de óleo: bujões, arruelas, anéis e toda a linha de insumos essenciais.</div>
+      </div>
+      <div class="mercado-card reveal">
+        <div class="mercado-icon">🔧</div>
+        <div class="mercado-name">Oficinas mecânicas</div>
+        <div class="mercado-desc">Ferramentas, fixadores, vedantes e componentes para manutenção completa de veículos leves e pesados.</div>
+      </div>
+      <div class="mercado-card reveal">
+        <div class="mercado-icon">🏪</div>
+        <div class="mercado-name">Autopeças</div>
+        <div class="mercado-desc">Fornecimento em quantidade para revendedores e distribuidores de autopeças com condições especiais de atacado.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTATO ===== -->
+<section id="contato" class="section">
+  <div class="contato-wrap">
+    <div class="sec-center reveal">
+      <p class="section-tag">Fale conosco</p>
+      <h2 class="section-title dark">Entre em contato</h2>
+      <div class="divider center"></div>
+      <p class="section-sub gray">Nossa equipe está pronta para atender sua oficina com agilidade e suporte técnico especializado.</p>
+    </div>
+    <div class="contato-grid">
+      <div class="contato-card reveal">
+        <div class="cc-icon"><i class="fab fa-whatsapp"></i></div>
+        <div>
+          <div class="cc-label">WhatsApp</div>
+          <div class="cc-value"><a href="https://wa.me/5511942086190">(11) 94208-6190</a></div>
+        </div>
+      </div>
+      <div class="contato-card reveal">
+        <div class="cc-icon"><i class="fas fa-envelope"></i></div>
+        <div>
+          <div class="cc-label">E-mail</div>
+          <div class="cc-value"><a href="mailto:contato.pollomix2@gmail.com">contato.pollomix2@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contato-card reveal">
+        <div class="cc-icon"><i class="fas fa-clock"></i></div>
+        <div>
+          <div class="cc-label">Horário de atendimento</div>
+          <div class="cc-value">Seg a Sex · 9h às 18h</div>
+        </div>
+      </div>
+      <div class="contato-card reveal">
+        <div class="cc-icon"><i class="fab fa-instagram"></i></div>
+        <div>
+          <div class="cc-label">Instagram</div>
+          <div class="cc-value"><a href="https://instagram.com/pollomix.auto" target="_blank">@pollomix.auto</a></div>
+        </div>
+      </div>
+      <div class="contato-card full reveal">
+        <div class="cc-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div>
+          <div class="cc-label">Endereço</div>
+          <div class="cc-value">Av. Presidente Tancredo Neves, 311 · Sala 2 · Jd São Judas<br>Vargem Grande Paulista – SP · CEP 06730-370</div>
+        </div>
+      </div>
+    </div>
+    <div class="wa-cta-wrap reveal">
+      <a href="https://wa.me/5511942086190?text=Olá! Gostaria de mais informações sobre os produtos da Pollo Mix." class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size:22px;"></i>
+        Falar no WhatsApp
+      </a>
+      <br>
+      <a href="https://instagram.com/pollomix.auto" class="social-link" target="_blank">
+        <i class="fab fa-instagram"></i> @pollomix.auto
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <img src="images/logo.png" alt="Pollo Mix" class="footer-logo">
+  <p class="footer-txt">
+    © 2026 Pollo Mix Produtos Automotivos · CNPJ 14.547.342/0001-30<br>
+    Av. Presidente Tancredo Neves, 311 · Sala 2 · Vargem Grande Paulista – SP · Seg a Sex, 9h às 18h
+  </p>
+</footer>
+
+<!-- Rodapé MonteSite - Atualização Automática -->
+<div id="montesite-footer-badge"></div>
+<script src="https://vaabpicspdbolvutnscp.supabase.co/functions/v1/get-footer-iframe"></script>
+
+<!-- WhatsApp flutuante -->
+<a href="https://wa.me/5511942086190" class="wa-float" target="_blank" aria-label="WhatsApp">
+  <svg width="28" height="28" fill="#fff" viewBox="0 0 24 24">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.09.543 4.054 1.49 5.763L.02 23.5l5.891-1.546A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.891 0-3.657-.502-5.178-1.379l-.371-.22-3.496.917.935-3.41-.241-.384A9.936 9.936 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+  </svg>
+</a>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.getElementById('navMenu');
+  menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+  function closeMenu() { navMenu.classList.remove('open'); }
+  document.addEventListener('click', (e) => {
+    if (!menuBtn.contains(e.target) && !navMenu.contains(e.target)) navMenu.classList.remove('open');
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
