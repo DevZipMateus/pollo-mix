@@ -145,7 +145,9 @@
     #hero {
       min-height: 100vh;
       padding-top: 68px;
-      background: var(--black);
+      background:
+        linear-gradient(rgba(13,13,13,0.78), rgba(13,13,13,0.78)),
+        url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1920&q=80') center/cover no-repeat;
       position: relative;
       display: flex;
       align-items: center;
@@ -714,6 +716,9 @@
       .mercado-grid { grid-template-columns: 1fr 1fr; }
       /* Desativa parallax em tablet/mobile (bug iOS/Android) */
       #sobre, #produtos, #mercado, #contato {
+        background-attachment: scroll, scroll;
+      }
+      #hero {
         background-attachment: scroll, scroll;
       }
     }
