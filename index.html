@@ -706,60 +706,86 @@
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== RESPONSIVE ===== */
+
+    /* Widescreen / Full HD+ */
     @media (min-width: 1280px) {
       .produtos-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
+    /* Small desktop / tablet paisagem */
     @media (max-width: 1023px) {
       header { padding: 0 24px; }
       .sobre-wrap { grid-template-columns: 1fr; gap: 48px; }
+      .mvv-stack { flex-direction: row; flex-wrap: wrap; }
+      .mvv-stack .mvv-card { flex: 1 1 200px; }
       .mercado-grid { grid-template-columns: 1fr 1fr; }
-      /* Desativa parallax em tablet/mobile (bug iOS/Android) */
-      #sobre, #produtos, #mercado, #contato {
-        background-attachment: scroll, scroll;
-      }
-      #hero {
+      /* Desativa parallax — bug iOS/Android */
+      #hero, #sobre, #produtos, #mercado, #contato {
         background-attachment: scroll, scroll;
       }
     }
 
+    /* Tablet retrato */
     @media (max-width: 768px) {
       nav { display: none; }
       .hamburger { display: flex; }
       header { height: 60px; padding: 0 20px; }
       #navMenu { top: 60px; }
       #hero { padding-top: 60px; }
+      .hero-inner { padding: 56px 20px; }
       .hero-logo-img { height: 70px; margin-bottom: 28px; }
       .hero-btns { flex-direction: column; align-items: center; }
       .btn-red, .btn-outline { width: 100%; max-width: 320px; justify-content: center; }
+      .stats-bar { padding: 36px 20px; }
       .stats-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 16px; }
       .section { padding: 72px 20px; }
       .sec-center { margin-bottom: 48px; }
       .sobre-highlights { grid-template-columns: 1fr 1fr; }
       .produtos-grid { grid-template-columns: 1fr 1fr; }
-      .mercado-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .carousel-wrap { margin-bottom: 48px; }
+      .carousel-slide img { max-height: 400px; }
+      .car-arrow { width: 36px; height: 36px; font-size: 13px; }
+      .mercado-grid { grid-template-columns: 1fr 1fr; }
       .contato-grid { grid-template-columns: 1fr; }
       .contato-card.full { grid-column: span 1; }
       .wa-float { bottom: 20px; right: 16px; width: 50px; height: 50px; }
     }
 
+    /* Mobile */
     @media (max-width: 480px) {
       header { padding: 0 16px; }
       .header-logo img { height: 34px; }
       .hero-inner { padding: 48px 16px; }
       .hero-logo-img { height: 60px; margin-bottom: 24px; }
+      .hero-badge { font-size: 10px; padding: 5px 12px; }
+      .stats-bar { padding: 28px 16px; }
       .stats-inner { gap: 20px 12px; }
       .section { padding: 56px 16px; }
+      .sec-center { margin-bottom: 40px; }
       .sobre-highlights { grid-template-columns: 1fr 1fr; }
       .produtos-grid { grid-template-columns: 1fr; }
-      .btn-whatsapp { font-size: 15px; padding: 14px 28px; }
+      .carousel-slide img { max-height: 260px; }
+      .car-arrow { width: 32px; height: 32px; font-size: 11px; }
+      .car-arrow.prev { left: 8px; }
+      .car-arrow.next { right: 8px; }
+      .mercado-grid { grid-template-columns: 1fr; }
+      .mercado-card { padding: 28px 20px; }
+      .btn-whatsapp { font-size: 15px; padding: 14px 28px; width: 100%; justify-content: center; }
+      .wa-cta-wrap { padding: 0; }
       .wa-float { bottom: 16px; right: 12px; width: 48px; height: 48px; }
     }
 
+    /* Mobile pequeno */
     @media (max-width: 360px) {
+      header { padding: 0 12px; }
       .header-logo img { height: 28px; }
+      .hero-inner { padding: 40px 14px; }
       .hero-logo-img { height: 52px; }
       .sobre-highlights { grid-template-columns: 1fr; }
+      .carousel-slide img { max-height: 210px; }
+      .section { padding: 48px 14px; }
+      .mercado-card { padding: 24px 16px; }
+      .hl-card { padding: 16px; }
     }
   </style>
 </head>
