@@ -415,7 +415,12 @@
     .divider.center { margin-left: auto; margin-right: auto; }
 
     /* ===== SOBRE ===== */
-    #sobre { background: var(--gray-50); }
+    #sobre {
+      background:
+        linear-gradient(rgba(249,249,249,0.93), rgba(249,249,249,0.93)),
+        url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed, fixed;
+    }
     .sobre-wrap {
       max-width: 1100px;
       margin: 0 auto;
@@ -493,7 +498,12 @@
     }
 
     /* ===== PRODUTOS ===== */
-    #produtos { background: var(--gray-100); }
+    #produtos {
+      background:
+        linear-gradient(rgba(243,243,243,0.92), rgba(243,243,243,0.92)),
+        url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed, fixed;
+    }
     .produtos-grid {
       max-width: 1100px;
       margin: 0 auto;
@@ -554,7 +564,10 @@
 
     /* ===== MERCADO ===== */
     #mercado {
-      background: var(--black);
+      background:
+        linear-gradient(rgba(13,13,13,0.91), rgba(13,13,13,0.91)),
+        url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed, fixed;
       padding: 100px 24px;
     }
     .mercado-inner { max-width: 1100px; margin: 0 auto; }
@@ -585,7 +598,12 @@
     .mercado-desc { font-size: 14px; color: rgba(255,255,255,0.42); line-height: 1.65; }
 
     /* ===== CONTATO ===== */
-    #contato { background: var(--gray-50); }
+    #contato {
+      background:
+        linear-gradient(rgba(249,249,249,0.94), rgba(249,249,249,0.94)),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920&q=80') center/cover no-repeat;
+      background-attachment: fixed, fixed;
+    }
     .contato-wrap { max-width: 900px; margin: 0 auto; }
     .contato-grid {
       display: grid;
@@ -694,6 +712,10 @@
       header { padding: 0 24px; }
       .sobre-wrap { grid-template-columns: 1fr; gap: 48px; }
       .mercado-grid { grid-template-columns: 1fr 1fr; }
+      /* Desativa parallax em tablet/mobile (bug iOS/Android) */
+      #sobre, #produtos, #mercado, #contato {
+        background-attachment: scroll, scroll;
+      }
     }
 
     @media (max-width: 768px) {
