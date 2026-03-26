@@ -800,6 +800,7 @@
     <a href="#sobre">Sobre</a>
     <a href="#produtos">Produtos</a>
     <a href="#mercado">Atuação</a>
+    <a href="vitrine.html" style="color:#FF8080;font-weight:600;">🛒 Vitrine</a>
     <a href="#contato" class="nav-cta">Fale conosco</a>
   </nav>
   <button class="hamburger" id="menuBtn" aria-label="Menu">
@@ -808,10 +809,11 @@
 </header>
 
 <nav id="navMenu">
-  <a href="#sobre"    onclick="closeMenu()">Sobre</a>
-  <a href="#produtos" onclick="closeMenu()">Produtos</a>
-  <a href="#mercado"  onclick="closeMenu()">Atuação</a>
-  <a href="#contato"  onclick="closeMenu()">Contato</a>
+  <a href="#sobre"        onclick="closeMenu()">Sobre</a>
+  <a href="#produtos"     onclick="closeMenu()">Produtos</a>
+  <a href="#mercado"      onclick="closeMenu()">Atuação</a>
+  <a href="#contato"      onclick="closeMenu()">Contato</a>
+  <a href="vitrine.html"  onclick="closeMenu()" style="color:#FF8080;font-weight:600;">🛒 Acessar Vitrine</a>
   <a href="https://wa.me/5511942086190" target="_blank" onclick="closeMenu()" class="mob-cta">
     <i class="fab fa-whatsapp"></i> Falar no WhatsApp
   </a>
@@ -838,6 +840,9 @@
       </a>
       <a href="#produtos" class="btn-outline">
         <i class="fas fa-box"></i> Ver produtos
+      </a>
+      <a href="vitrine.html" class="btn-outline" style="border-color:rgba(204,0,0,0.5);color:#FF8080;">
+        <i class="fas fa-store"></i> Acessar vitrine
       </a>
     </div>
   </div>
@@ -996,6 +1001,18 @@
       <a href="https://wa.me/5511942086190?text=Olá! Gostaria de saber mais sobre insumos para troca de óleo." class="prod-cta" target="_blank">Pedir agora <i class="fas fa-arrow-right"></i></a>
     </div>
 
+  </div>
+
+  <!-- Bloco Vitrine -->
+  <div style="max-width:1100px;margin:48px auto 0;background:linear-gradient(135deg,#1A0000 0%,#2A0000 50%,#1A0000 100%);border:1px solid rgba(204,0,0,0.35);border-radius:20px;padding:48px 40px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;">
+    <div>
+      <p style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#FF8080;margin-bottom:10px;">Catálogo Online</p>
+      <h3 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(28px,4vw,44px);font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.05;margin-bottom:12px;">Acesse nossa vitrine<br>e confira todos os preços</h3>
+      <p style="font-size:15px;color:rgba(255,255,255,0.50);max-width:480px;line-height:1.7;">Navegue pelo nosso catálogo completo com preços atualizados, estoque disponível e pedido direto. Tudo em um clique, sem precisar falar com ninguém.</p>
+    </div>
+    <a href="vitrine.html" style="display:inline-flex;align-items:center;gap:10px;background:#CC0000;color:#fff;font-size:16px;font-weight:700;padding:16px 36px;border-radius:8px;white-space:nowrap;text-decoration:none;transition:background 0.2s;flex-shrink:0;" onmouseover="this.style.background='#E00000'" onmouseout="this.style.background='#CC0000'">
+      <i class="fas fa-store"></i> Abrir vitrine agora
+    </a>
   </div>
 </section>
 
